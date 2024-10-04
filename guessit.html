@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
- <head>
+
+<head>
     <title>Colours</title>
- </head>
+</head>
+
 <body>
     <h1>Guess the color Geethika Kolukuluri</h1>
     <form>
         <label for="mysteryColor">Guess the color </label>
-        <input type ="password" id="mysteryColor"  min=10 max=50 step=2 value="Red"> <br>
-    
+        <input type="password" id="mysteryColor" min=10 max=50 step=2 value="Red"> <br>
+
         <label for="guess">Enter a guess</label>
-        <input type ="text" id="guess" name="guess"> <br>
-    
+        <input type="text" id="guess" name="guess"> <br>
+
         <input type="button" onclick="processColor()" value="Check the color">
         <p id="result">attempts: 0, wrong guesses: 0</p>
     </form>
@@ -35,29 +37,36 @@
             document.getElementById('result').innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
         }
     </script>
-    <div class="container">
-        <img src="khaja.jpeg" width="200" height="200" alt="Image-1" onclick="nextImage()">
-        <script>
-            let showing=1;
-            function nextImage() {
-            const image = document.getElementById('plantImage');
-            
+     <div class="container">
+        <img id="plantImage" src="plant1.jpeg" alt="Plant Image" onclick="nextImage()" width="200px" height="200px">
+    </div>
+
+    <script>
+        
+        let showing = 1;
+
+        
+        function nextImage() {
             switch (showing) {
                 case 1:
-                    image.src = "laddu.jpeg";  // Display the second image
-                    showing = 2;               // Update the value of showing
+                    document.getElementById('plantImage').src = 'plant2.jpeg';
+                    showing = 2;
                     break;
                 case 2:
-                    image.src = "oreo cake.jpeg";  // Display the third image
-                    showing = 3;               // Update the value of showing
+                    document.getElementById('plantImage').src = 'plant3.jpeg';
+                    showing = 3;
                     break;
                 case 3:
-                    image.src = "khaja.jpeg";  // Return to the first image
-                    showing = 1;               // Reset the value of showing
+                    document.getElementById('plantImage').src = 'plant1.jpeg';
+                    showing = 1;
+                    break;
+                default:
+                    showing = 1;
                     break;
             }
         }
-        </script>
+    </script>
     </div>
 </body>
+
 </html>
