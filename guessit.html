@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html>
- 
+ <head>
+    <title>Colours</title>
+ </head>
 <body>
-
-<h2>Getting input</h2>
-
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    <h1>Guess the color Geethika Kolukuluri</h1>
+    <form>
+        <label for="mysteryColor">Guess the color </label>
+        <input type ="password" id="mysteryColor"  min=10 max=50 step=2 value="Red"> <br>
     
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+        <label for="guess">Enter a guess</label>
+        <input type ="text" id="guess" name="guess"> <br>
+    
+        <input type="button" onclick="processColor()" value="Check the color">
+        <p id="result">attempts: 0, wrong guesses: 0</p>
+    </form>
+    <script>
+        let attempts = 0;
+        let wrong = 0;
 
+        function processColor() {
+            const mysteryColor = document.getElementById('mysteryColor').value;
+            const userGuess = document.getElementById('guess').value;
+
+            attempts++;
+
+            if (userGuess.toLowerCase() !== mysteryColor.toLowerCase()) {
+                wrong++;
+                alert('That was not it');
+            } else {
+                alert('You got it!');
+            }
+
+            document.getElementById('result').innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
+        }
+    </script>
+    <div class="container">
+        <img src="khaja.jpeg" width="200" height="200" alt="Image-1" onclick="nextImage()">
+        <script>
+            let showing=1;
+            function nextImage() {
+            const image = document.getElementById('plantImage');
+            
+            switch (showing) {
+                case 1:
+                    image.src = "laddu.jpeg";  // Display the second image
+                    showing = 2;               // Update the value of showing
+                    break;
+                case 2:
+                    image.src = "oreo cake.jpeg";  // Display the third image
+                    showing = 3;               // Update the value of showing
+                    break;
+                case 3:
+                    image.src = "khaja.jpeg";  // Return to the first image
+                    showing = 1;               // Reset the value of showing
+                    break;
+            }
+        }
+        </script>
+    </div>
 </body>
-</html> 
+</html>
